@@ -1,0 +1,38 @@
+import os
+import sys
+import pydicom
+from PIL import Image
+
+def dcm_to_tiff(dcm_path, save_path):
+	if not os.path.exists(save_path):
+		os.makedirs(save_path)
+	
+	dcm_path = os.path.normpath(dcm_path)
+	path_components = dcm_path.split(os.sep)
+	sample = path_components[-1][:-4]
+	ds = pydicom.dcmread(dcm_path, force=True)
+	pixels = ds.pixel_array
+
+	for i,img in enumerate(pixels):
+		pil_img = Image.fromarray(img)
+		r, g, b = pil_img.split()
+		g = r.copy()
+		b = r.copy()
+		fixed_pil_img = Image.merge('RGB', (r, g, b))
+		
+		width, height = fixed_pil_img.size
+		fixed_pil_img = fixed_pil_img.crop((35, 60, width-105, height))
+		
+		out_img_fname = path_components[-1].replace(".dcm", "_{}.tif".format(i))
+		fixed_pil_img.save(os.path.join(save_path, sample, out_img_fname))
+
+		print("Saved slice {} as {}".format(i, out_img_fname))
+
+if __name__ == "__main__":
+	if len(sys.argv) != 3:
+		print("ERROR: incorrect usage")
+		print("Usage: python dcm_to_tiff.py <dcm_path> <save_path>")
+	else:
+		dcm_path = sys.argv[1]
+		save_path = sys.argv[2]
+		dcm_to_tiff(dcm_path, save_path)
