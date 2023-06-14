@@ -11,16 +11,28 @@
     * Using git: `git clone git@github.com:eeshaanrehani/imageJ-tracing.git`
     * By downloading zip file of code: `wget "https://github.com/eeshaanrehani/imageJ-tracing/archive/refs/heads/main.zip"`
     * By [downloading directly](https://github.com/eeshaanrehani/imageJ-tracing/archive/refs/heads/main.zip).
-3. Set up conda environment.
+3. Enter the directory with the git repository: `cd /path/to/imageJ-tracing-main/`.
+4. Set up conda environment.
     * `conda env create -f environment.yml`
     * If prompted `[y/n]`: `y`.
 
-**To run the macro:**  
-1. Open the terminal, go to the folder with the file `dcm_to_tiff.py` in it: `cd /path/to/dcm_to_tiff.py`.
+**Preparing the macro:**  
+1. Open the terminal and go to the downloaded folder with the scripts in it: `cd /path/to/imageJ-tracing-main/`.
 2. Open ImageJ, click `Plugins`>`Macros`>`Run`.
-3. In the file explorer pop-up, select the file `DICOM_region_tracing.ijm`.
-4. Select the appropriate DICOM file, and select the folder to save slices and masks in.
-    * This should theoretically be the same folder for every single DICOM - for each DICOM, two new folders will be created inside: `/{DICOM_name}/`, and `/mask_{DICOM_name}`.
-5. Follow the on-screen instructions to convert the DICOM to .tif slices, and segment out any regions.
+3. In the file explorer pop-up, select the script `DICOM_region_tracing.ijm` (this is in the folder `/imageJ-tracing-main/`).
 
-
+**Using the macro:** _pay attention to the "log" window that imageJ creates_
+1. In the first file explorer popup, select the DICOM you want to annotate.
+2. In the next popup, select the folder you want to save slices and masks in. **Do not press 
+    * This should theoretically be the same folder for every single DICOM - for each DICOM you select, the script will create two new folders inside: `/{DICOM_name}/`, and `/mask_{DICOM_name}`.
+3. For now, ignore the dialog popup. The log window should have two commands. Enter them into your terminal:
+    * `conda activate dicom_imagej`.
+    * `python dcm_to_tiff.py {DICOM_path} {save_directory}`. Replace `{DICOM_path}` and `{save_directory}` with the path to the DICOM file you just selected and the directory you just designated for saving the masks. This command will convert the DICOM to tiff images for each individual slice, and save the slices as `/{save_directory}/{DICOM_name}/{DICOM_name}_{slice}.tif`.
+4. In the dialog popup, enter the number of the first slice to annotate. Press OK.
+5. Enter the number of the last slice to annotate. Press OK.
+6. At this point, the screen will flash a lot as it opens and closes images. It is creating a blank mask for each slice up to the first one to annotate. When a new dialog box pops up, **do not press OK**.
+7. Select the `freehand selections` tool in ImageJ (4th button from the left), and trace out the first item. In the ROI manager window, press `Add`, and then press `More`>`Fill`.
+    * Repeat this for everything you want to segment in the slice.
+8. When you are finished with a slice, press OK.
+9. The next slice to annotate will pop up. Repeat steps 7-8. After the ending slice indicated earlier has been annotated, the screen will flash once again (as in step 6). It is creating a blank mask for each of the remaining slices. 
+10. To start a new DICOM, see: **Preparing the macro**: Step 2.
