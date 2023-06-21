@@ -4,8 +4,8 @@ import pydicom
 from PIL import Image
 
 def dcm_to_tiff(dcm_path, save_path):
-	if not os.path.exists(save_path):
-		os.makedirs(save_path)
+
+	create_folders(dcm_path, save_path)
 	
 	dcm_path = os.path.normpath(dcm_path)
 	path_components = dcm_path.split(os.sep)
@@ -27,6 +27,19 @@ def dcm_to_tiff(dcm_path, save_path):
 		fixed_pil_img.save(os.path.join(save_path, sample, out_img_fname))
 
 		print("Saved slice {} as {}".format(i, out_img_fname))
+
+def create_folders(dcm_path, save_path):
+	dcm_name = os.path.splitext(os.path.basename(dcm_path))[0]
+	main_folder = os.path.join(save_path, dcm_name)
+
+	if not os.path.exists(main_folder):
+		os.makedirs(main_folder)
+
+	mask_folder_name = "mask_" + dcm_name
+	mask_folder = os.path.join(save_path, mask_folder_name)
+
+	if not os.path.exists(mask_folder):
+		os.makedirs(mask_folder)
 
 if __name__ == "__main__":
 	if len(sys.argv) != 3:

@@ -19,8 +19,6 @@ print("Enter in the terminal (replace {} with correct values): python dcm_to_tif
 fileName = File.getNameWithoutExtension(path);
 outputDir = outputRoot + fileName + "/";
 maskDir = outputRoot + "mask_" + fileName + "/";
-File.makeDirectory(outputDir);
-File.makeDirectory(maskDir);
 
 flist = getFileList(outputDir);
 
