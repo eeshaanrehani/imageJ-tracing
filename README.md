@@ -18,7 +18,7 @@
 
 **Convert dicom stacks to .tif image slices:**
 1. Type in your terminal: `conda activate dicom_imagej`.
-2. Type in your terminal: `python dcm_to_tiff.py {DICOM_path} {save_directory}`. Replace `{DICOM_path}` and `{save_directory}` with the path to a DICOM file the directory you want masks and slices to be saved in. This command will convert the DICOM to tiff images for each individual slice, and save the slices as `.../{save_directory}/{DICOM_name}/{DICOM_name}_{slice}.tif`. It will also create another folder inside your save directory, `.../{save_directory}/mask_{DICOM_name}/`, which is where the masks will be saved. 
+2. Type in your terminal: `python dcm_to_tiff.py {DICOM_path} {save_directory}`. Replace `{DICOM_path}` and `{save_directory}` with the path to a DICOM file and the directory you want masks and slices to be saved in. This command will convert the DICOM to tiff images for each individual slice, and save the slices as `.../{save_directory}/{DICOM_name}/{DICOM_name}_{slice}.tif`. It will also create another folder inside your save directory, `.../{save_directory}/mask_{DICOM_name}/`, which is where the masks will be saved. 
 
 **Preparing the macro:**  
 1. Open the terminal and go to the downloaded folder with the scripts in it: `cd /path/to/imageJ-tracing-main/`.
