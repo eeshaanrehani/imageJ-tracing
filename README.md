@@ -7,11 +7,9 @@
         * If you are on an older Intel Mac, download this: [https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh](https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh). Then, enter in your terminal `bash Miniconda3-latest-MacOSX-arm64.sh`.
         * If you are on a Windows computer, download this: [https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe). Double-click the installed file (...exe) and follow the on-screen instructions. I'm not 100% on how the install and future steps work with Windows so please email me so we can meet and get it set up.  
     * Test it by going to your terminal and typing in: `conda`.
-2. Download [git repository](https://github.com/eeshaanrehani/imageJ-tracing) using one of the following methods:
-    * Using git: `git clone git@github.com:eeshaanrehani/imageJ-tracing.git`
-    * By downloading zip file of code: `wget "https://github.com/eeshaanrehani/imageJ-tracing/archive/refs/heads/main.zip"`
-    * By [downloading directly](https://github.com/eeshaanrehani/imageJ-tracing/archive/refs/heads/main.zip).
-3. Enter the directory with the git repository: `cd /path/to/imageJ-tracing-main/`.
+2. Download [git repository](https://github.com/eeshaanrehani/imageJ-tracing):
+    * By [downloading directly](https://github.com/eeshaanrehani/imageJ-tracing/archive/refs/heads/windows.zip).
+3. Enter the directory with the git repository: `cd /path/to/imageJ-tracing-windows/`.
 4. Set up conda environment.
     * `conda env create -f environment.yml`
     * If prompted `[y/n]`: `y`.
@@ -21,9 +19,9 @@
 2. Type in your terminal: `python dcm_to_tiff.py {DICOM_path} {save_directory}`. Replace `{DICOM_path}` and `{save_directory}` with the path to a DICOM file and the directory you want masks and slices to be saved in. This command will convert the DICOM to tiff images for each individual slice, and save the slices as `.../{save_directory}/{DICOM_name}/{DICOM_name}_{slice}.tif`. It will also create another folder inside your save directory, `.../{save_directory}/mask_{DICOM_name}/`, which is where the masks will be saved. 
 
 **Preparing the macro:**  
-1. Open the terminal and go to the downloaded folder with the scripts in it: `cd /path/to/imageJ-tracing-main/`.
+1. Open the terminal and go to the downloaded folder with the scripts in it: `cd /path/to/imageJ-tracing-windows/`.
 2. Open ImageJ, click `Plugins`>`Macros`>`Run`.
-3. In the file explorer pop-up, select the script `DICOM_region_tracing.ijm` (this is in the folder `/imageJ-tracing-main/`).
+3. In the file explorer pop-up, select the script `DICOM_region_tracing.ijm` (this is in the folder `/imageJ-tracing-windows/`).
 
 **Using the macro:** _pay attention to the "log" window that imageJ creates_
 1. In the first file explorer popup, select the DICOM you want to annotate.
