@@ -9,24 +9,24 @@
     * Test it by going to your terminal and typing in: `conda`.
 2. Download [git repository](https://github.com/eeshaanrehani/imageJ-tracing):
     * By [downloading directly](https://github.com/eeshaanrehani/imageJ-tracing/archive/refs/heads/windows.zip).
-3. Enter the directory with the git repository: `cd /path/to/imageJ-tracing-windows/`.
+3. Enter the directory with the git repository: `cd \path\to\imageJ-tracing-windows`.
 4. Set up conda environment.
     * `conda env create -f environment.yml`
     * If prompted `[y/n]`: `y`.
 
 **Convert dicom stacks to .tif image slices:**
 1. Type in your terminal: `conda activate dicom_imagej`.
-2. Type in your terminal: `python dcm_to_tiff.py {DICOM_path} {save_directory}`. Replace `{DICOM_path}` and `{save_directory}` with the path to a DICOM file and the directory you want masks and slices to be saved in. This command will convert the DICOM to tiff images for each individual slice, and save the slices as `.../{save_directory}/{DICOM_name}/{DICOM_name}_{slice}.tif`. It will also create another folder inside your save directory, `.../{save_directory}/mask_{DICOM_name}/`, which is where the masks will be saved. 
+2. Type in your terminal: `python dcm_to_tiff.py {DICOM_path} {save_directory}`. Replace `{DICOM_path}` and `{save_directory}` with the path to a DICOM file and the directory you want masks and slices to be saved in. This command will convert the DICOM to tiff images for each individual slice, and save the slices as `...\{save_directory}\{DICOM_name}\{DICOM_name}_{slice}.tif`. It will also create another folder inside your save directory, `...\{save_directory}\mask_{DICOM_name}\`, which is where the masks will be saved. 
 
 **Preparing the macro:**  
-1. Open the terminal and go to the downloaded folder with the scripts in it: `cd /path/to/imageJ-tracing-windows/`.
+1. Open the terminal and go to the downloaded folder with the scripts in it: `cd \path\to\imageJ-tracing-windows\`.
 2. Open ImageJ, click `Plugins`>`Macros`>`Run`.
-3. In the file explorer pop-up, select the script `DICOM_region_tracing.ijm` (this is in the folder `/imageJ-tracing-windows/`).
+3. In the file explorer pop-up, select the script `DICOM_region_tracing.ijm` (this is in the folder `\imageJ-tracing-windows\`).
 
 **Using the macro:** _pay attention to the "log" window that imageJ creates_
 1. In the first file explorer popup, select the DICOM you want to annotate.
 2. In the next popup, select the folder you want to save slices and masks in. **Do not press 
-    * This should theoretically be the same folder for every single DICOM - for each DICOM you select, the script will create two new folders inside: `/{DICOM_name}/`, and `/mask_{DICOM_name}`.
+    * This should theoretically be the same folder for every single DICOM - for each DICOM you select, the script will create two new folders inside: `\{DICOM_name}\`, and `\mask_{DICOM_name}\`.
 3. The log window will show the python commands from above. Ignore it if it's already been done.
 4. In the dialog popup, enter the number of the first slice to annotate. Press OK.
 5. Enter the number of the last slice to annotate. Press OK.
