@@ -10,7 +10,7 @@ def setup_images(kaggle_root, save_root):
     for split in ["test", "train"]:
         for label in labels:
             images = [f for f in os.listdir(os.path.join(kaggle_path, split, label)) if os.path.isfile(os.path.join(kaggle_path, split, label, f))]
-            image_names = [label+"_"+f[:-4]+"_original" for f in images]
+            image_names = [label+"_"+f[:-4] for f in images]
             
             for i,fname in enumerate(image_names):
                 num = random.random()
@@ -27,7 +27,7 @@ def setup_images(kaggle_root, save_root):
                 save_path = os.path.join(save_root, split, fname)
                 os.makedirs(save_path)
 
-                im.save(os.path.join(save_path, fname + ".tiff"))
+                im.save(os.path.join(save_path, fname + "_original" + ".tiff"))
                 print(f"SUCCESS {split} - {fname}")
 
 if __name__ == "__main__":
