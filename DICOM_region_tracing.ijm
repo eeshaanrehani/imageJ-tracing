@@ -12,7 +12,7 @@ outputRoot = getDirectory("Select the results directory to save slices and masks
 print(outputRoot);
 
 print("Enter in the terminal: conda activate dicom_imagej");
-print("Enter in the terminal (replace {} with correct values): python dcm_to_tiff.py {DICOM path} {save directory}");
+print("Enter in the terminal (replace {} with correct values): python dcm_to_tiff.py {DICOM path} {save directory} {ending_frame_number}");
 
 // Read in DICOM and save all slices as tif images
 
