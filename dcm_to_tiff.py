@@ -3,7 +3,7 @@ import sys
 import pydicom
 from PIL import Image
 
-def dcm_to_tiff(dcm_path, save_path):
+def dcm_to_tiff(dcm_path, save_path, last_frame):
 
 	create_folders(dcm_path, save_path)
 	
@@ -12,6 +12,8 @@ def dcm_to_tiff(dcm_path, save_path):
 	sample = path_components[-1][:-4]
 	ds = pydicom.dcmread(dcm_path, force=True)
 	pixels = ds.pixel_array
+	if last_frame != 0:
+		pixels = pixels[:last_frame+1]
 
 	for i,img in enumerate(pixels):
 		pil_img = Image.fromarray(img)
@@ -44,8 +46,10 @@ def create_folders(dcm_path, save_path):
 if __name__ == "__main__":
 	if len(sys.argv) != 3:
 		print("ERROR: incorrect usage")
-		print("Usage: python dcm_to_tiff.py <dcm_path> <save_path>")
+		print("Usage: python dcm_to_tiff.py <dcm_path> <save_path> <ending_frame_number>")
+		print("Use 0 for ending_frame_number if you want to convert all frames")
 	else:
 		dcm_path = sys.argv[1]
 		save_path = sys.argv[2]
-		dcm_to_tiff(dcm_path, save_path)
+		last_frame = int(sys.argv[3])
+		dcm_to_tiff(dcm_path, save_path, last_frame)
