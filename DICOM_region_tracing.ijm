@@ -12,7 +12,7 @@ outputRoot = getDirectory("Select the results directory to save slices and masks
 print(outputRoot);
 
 print("Enter in the terminal: conda activate dicom_imagej");
-print("Enter in the terminal (replace {} with correct values): python dcm_to_tiff.py {DICOM path} {save directory}");
+print("Enter in the terminal (replace {} with correct values): python dcm_to_tiff.py {DICOM path} {save directory} {ending_frame_number}");
 
 // Read in DICOM and save all slices as tif images
 
@@ -42,7 +42,7 @@ endSlice = getNumber("Enter the end slice: ", flist.length-1);
 
 for (i=0; i<flist.length; i++) {
 
-	if (i>=startSlice && i<=endSlice && ((i-startSlice)%4==0 || i==endSlice)) {
+	if (i>=startSlice && i<=endSlice && ((i-startSlice)%3==0 || i==endSlice)) {
 		open(outputDir + flist[i]);
 		origID = getImageID();
 
