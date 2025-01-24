@@ -8,8 +8,8 @@
         * If you are on a Windows computer, download this: [https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe). Double-click the installed file (...exe) and follow the on-screen instructions. I'm not 100% on how the install and future steps work with Windows so please email me so we can meet and get it set up.  
     * Test it by going to your terminal and typing in: `conda`.
 2. Download the code:
-    * By [downloading directly](https://github.com/eeshaanrehani/imageJ-tracing/archive/refs/heads/ovary_windows_usask.zip).
-3. Enter the directory with the git repository: `cd /path/to/imageJ-tracing-ovary_windows_usask/`.
+    * By [downloading directly](https://github.com/eeshaanrehani/imageJ-tracing/archive/refs/heads/ovary_windows.zip).
+3. Enter the directory with the git repository: `cd /path/to/imageJ-tracing-ovary_windows/`.
 4. Set up conda environment.
     * `conda env create -f environment.yml`
     * If prompted `[y/n]`: `y`.
