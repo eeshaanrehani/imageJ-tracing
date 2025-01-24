@@ -17,10 +17,10 @@ print("Enter in the terminal (replace {} with correct values): python dcm_to_tif
 // Read in DICOM and save all slices as tif images
 
 fileName = File.getNameWithoutExtension(path);
-outputDir = outputRoot + fileName + "\\";
+outputDir = outputRoot + fileName + "/";
 // print("TIF directory:");
 // print(outputDir);
-maskDir = outputRoot + "mask_" + fileName + "\\";
+maskDir = outputRoot + "mask_" + fileName + "/";
 // print("Mask directory:");
 // print(maskDir);
 
