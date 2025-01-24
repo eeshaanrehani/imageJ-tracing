@@ -23,7 +23,7 @@ def dcm_to_tiff(dcm_path, save_path, last_frame):
 		fixed_pil_img = Image.merge('RGB', (r, g, b))
 		
 		width, height = fixed_pil_img.size
-		fixed_pil_img = fixed_pil_img.crop((60, 60, width-105, height-90))
+		fixed_pil_img = fixed_pil_img.crop((35, 60, width-105, height))
 		
 		out_img_fname = path_components[-1].replace(".dcm", "_{}.tif".format(i))
 		fixed_pil_img.save(os.path.join(save_path, sample, out_img_fname))
