@@ -47,7 +47,7 @@ endSlice = getNumber("Enter the end slice: ", flist.length-1);
 
 for (i=0; i<flist.length; i++) {
 
-	if (i>=startSlice && i<=endSlice && ((i-startSlice)%4==0 || i==endSlice)) {
+	if (i>=startSlice && i<=endSlice && ((i-startSlice)%8==0 || i==endSlice)) {
 		open(outputDir + flist[i]);
 		origID = getImageID();
 
