@@ -12,8 +12,8 @@ def dcm_to_tiff(dcm_path, save_path, last_frame):
 	sample = path_components[-1][:-4]
 	ds = pydicom.dcmread(dcm_path, force=True)
 	pixels = ds.pixel_array
-    if last_frame != 0:
-        pixels = pixels[:last_frame+1]
+	if last_frame != 0: 
+		pixels = pixels[:last_frame+1]
 
 	for i,img in enumerate(pixels):
 		pil_img = Image.fromarray(img)
@@ -47,9 +47,9 @@ if __name__ == "__main__":
 	if len(sys.argv) != 4:
 		print("ERROR: incorrect usage")
 		print("Usage: python dcm_to_tiff.py <dcm_path> <save_path>")
-        print("Use 0 for ending_frame_number if you want to convert all frames")
+		print("Use 0 for ending_frame_number if you want to convert all frames")
 	else:
 		dcm_path = sys.argv[1]
 		save_path = sys.argv[2]
-        last_frame = int(sys.argv[3])
+		last_frame = int(sys.argv[3])
 		dcm_to_tiff(dcm_path, save_path, last_frame)
