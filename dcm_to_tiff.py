@@ -44,7 +44,7 @@ def create_folders(dcm_path, save_path):
 		os.makedirs(mask_folder)
 
 if __name__ == "__main__":
-	if len(sys.argv) != 3:
+	if len(sys.argv) != 4:
 		print("ERROR: incorrect usage")
 		print("Usage: python dcm_to_tiff.py <dcm_path> <save_path> <ending_frame_number>")
 		print("Use 0 for ending_frame_number if you want to convert all frames")
